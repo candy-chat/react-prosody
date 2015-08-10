@@ -22,7 +22,26 @@ Candy.Core.connect('localhost');
     listenables: [ChatActions],
 
     onNewMessage: function(message) {
-      var messages = this.messages.concat([{body: message, mine: true}]);
+      var roomJid = Candy.View.getCurrent().roomJid,
+        // room = Candy.View.Pane.Chat.rooms[roomJid],
+        roomType = 'groupchat',
+        targetJid = 'test@conference.localhost',
+        message = message,
+        xhtmlMessage;
+
+      Candy.Core.Action.Jabber.Room.Message(targetJid, message, roomType, xhtmlMessage);
+    },
+
+    onMessageReceived: function(message) {
+      // console.warn(message);
+      var mine = message.attributes[3].value.indexOf(Candy.Core.getUser().data.nick) !== -1;
+      var msg = {
+        body: message.getElementsByTagName('body')[0].innerHTML,
+        author: message.attributes[3].value.split('/')[1],
+        mine: mine,
+      };
+
+      var messages = this.messages.concat([msg]);
 
       this.updateList(messages);
     },
@@ -35,14 +54,7 @@ Candy.Core.connect('localhost');
     },
 
     getInitialState: function() {
-      var messagesFromServer = [
-        { body: "Hello there!", mine: false },
-        { body: "Hey!", mine: true },
-        { body: "How's it going?", mine: false },
-        { body: "Not bad", mine: true },
-      ];
-
-      this.messages = messagesFromServer;
+      this.messages = [];
 
       return this.messages;
     }

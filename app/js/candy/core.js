@@ -235,7 +235,10 @@ Candy.Core = (function(self, Strophe, $) {
 	self.registerEventHandlers = function() {
 		self.addHandler(self.Event.Jabber.Version, Strophe.NS.VERSION, 'iq');
 		self.addHandler(self.Event.Jabber.Presence, null, 'presence');
-		self.addHandler(self.Event.Jabber.Message, null, 'message');
+
+		// self.addHandler(self.Event.Jabber.Message, null, 'message');
+		self.addHandler(ChatActions.messageReceived, null, 'message');
+
 		self.addHandler(self.Event.Jabber.Bookmarks, Strophe.NS.PRIVATE, 'iq');
 		self.addHandler(self.Event.Jabber.Room.Disco, Strophe.NS.DISCO_INFO, 'iq', 'result');
 
@@ -283,6 +286,8 @@ Candy.Core = (function(self, Strophe, $) {
 		});
 
 		_anonymousConnection = !_anonymousConnection ? jidOrHost && jidOrHost.indexOf("@") < 0 : true;
+
+		nick = nick || location.hash || 'test';
 
 		if(jidOrHost && password) {
 			// Respect the resource, if provided

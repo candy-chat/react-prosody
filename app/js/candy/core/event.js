@@ -361,6 +361,7 @@ Candy.Core.Event = (function(self, Strophe, $) {
 		 *   (Boolean) - true
 		 */
 		Message: function(msg) {
+			console.log(msg);
 			Candy.Core.log('[Jabber] Message');
 			msg = $(msg);
 

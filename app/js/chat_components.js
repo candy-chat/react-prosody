@@ -5,7 +5,12 @@
     render () {
       function createMessage(message) {
         var className = message.mine ? 'mine' : 'their';
-        return <li className={className}>{message.body}</li>;
+
+        return  <li className={className}>
+                  <strong>{message.author}</strong>
+                  <br/>
+                  {message.body}
+                </li>;
       }
 
       return (
