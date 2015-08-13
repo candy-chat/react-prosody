@@ -1,13 +1,11 @@
 {
-  "name": "react-news",
+  "name": "react-prosody",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/echenley/react-news.git"
+    "url": "https://github.com/rafbgarcia/react-prosody.git"
   },
   "dependencies": {
-    "bluebird": "^2.9.34",
-    "classnames": "^2.1.3",
     "moment": "^2.10.3",
     "react": "^0.13.3",
     "react-router": "^1.0.0-beta2",
@@ -53,26 +51,5 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "build": "gulp build",
-    "dist": "gulp dist",
-    "start": "gulp",
-    "lint": "gulp lint",
-    "test": "jest"
-  },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testFileExtensions": [
-      "es6",
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "json",
-      "es6"
-    ],
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react"
-    ]
   }
 }
