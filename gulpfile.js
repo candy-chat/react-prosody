@@ -22,16 +22,16 @@ gulp.task('js', function() {
 
     // candy.js
     gulp.src([
-            './app/js/candy/candy.js',
-            './app/js/candy/core.js',
-            './app/js/candy/view.js',
-            './app/js/candy/util.js',
-            './app/js/candy/core/action.js',
-            './app/js/candy/core/chatRoom.js',
-            './app/js/candy/core/chatRoster.js',
-            './app/js/candy/core/chatUser.js',
-            './app/js/candy/core/contact.js',
-            './app/js/candy/core/event.js',
+            './app/vendor/candy/candy.js',
+            './app/vendor/candy/core.js',
+            './app/vendor/candy/view.js',
+            './app/vendor/candy/util.js',
+            './app/vendor/candy/core/action.js',
+            './app/vendor/candy/core/chatRoom.js',
+            './app/vendor/candy/core/chatRoster.js',
+            './app/vendor/candy/core/chatUser.js',
+            './app/vendor/candy/core/contact.js',
+            './app/vendor/candy/core/event.js',
         ])
         .pipe(plugins.concat('candy.js'))
         .pipe(gulp.dest('./public/js/'));

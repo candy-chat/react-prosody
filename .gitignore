@@ -1,4 +1,7 @@
 app/vendor/*
+!app/vendor/candy/
+
 .vagrant
 .idea
 node_modules
+
