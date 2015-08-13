@@ -1,3 +1,4 @@
+app/vendor/*
 .vagrant
 .idea
 node_modules
