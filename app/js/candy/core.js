@@ -287,8 +287,6 @@ Candy.Core = (function(self, Strophe, $) {
 
 		_anonymousConnection = !_anonymousConnection ? jidOrHost && jidOrHost.indexOf("@") < 0 : true;
 
-		nick = nick || location.hash || 'test';
-
 		if(jidOrHost && password) {
 			// Respect the resource, if provided
 			var resource = Strophe.getResourceFromJid(jidOrHost);

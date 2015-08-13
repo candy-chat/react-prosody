@@ -2,6 +2,8 @@
   'use strict';
 
   global.ChatActions = Reflux.createActions([
+    "connectToServer",
+
     "newMessage",
     "messageReceived",
   ]);
