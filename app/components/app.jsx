@@ -1,14 +1,20 @@
 'use strict';
 
-var Router = ReactRouter;
-var Route = Router.Route;
-var Navigation = Router.Navigation;
-var RouteHandler = Router.RouteHandler;
-var DefaultRoute = Router.DefaultRoute;
-var Link = Router.Link;
+import React from 'react/addons';
+import { Router, Route, Link, Navigation, DefaultRoute, RouteHandler } from 'react-router';
+import HashHistory from 'react-router/lib/HashHistory';
+
+import NicknameStorage from '../shared/nickname_storage'
+import Nickname from './chat/nickname_form'
+import Chat from './chat/main'
+import ChatActions from './chat/_actions'
 
 
-var App = React.createClass({
+let App = React.createClass({
+  propTypes: {
+    children: React.PropTypes.object
+  },
+
   mixins: [
     Navigation,
     NicknameStorage
@@ -29,20 +35,18 @@ var App = React.createClass({
           <h3>Candy React</h3>
         </header>
 
-        <RouteHandler/>
+        { this.props.children }
       </div>
     )
   }
 });
 
-var routes = (
-  <Route handler={App} path="/">
-    <Route name="nickname" handler={ Nickname } />
 
-    <DefaultRoute handler={ Chat } />
-  </Route>
-);
-
-Router.run(routes, function (Handler) {
-  React.render(<Handler/>, document.getElementById('app'));
-});
+React.render((
+  <Router history={ new HashHistory() }>
+    <Route component={App}>
+      <Route path="/" component={Chat} />
+      <Route path="/nickname" component={Nickname} />
+    </Route>
+  </Router>
+), document.getElementById('app'));

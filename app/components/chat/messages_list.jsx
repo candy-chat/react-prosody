@@ -1,38 +1,29 @@
 'use strict';
 
-// var styles = {
-//   ul li:not(:last-child) {
-//   margin-bottom: 20px; }
-// ul li.their {
-//   text-align: left;
-//   padding-right: 50px; }
-// ul li.mine {
-//   text-align: right;
-//   padding-left: 50px; }
+import React from 'react/addons'
 
-// }
-
-var MessagesList = React.createClass({
+export default React.createClass({
   render () {
     function createMessage(message) {
       var className = message.mine ? 'mine' : 'their';
 
-      return  <li className={className}>
+      return  <li className={className} style={liStyle(message.mine)}>
                 <strong>{message.author}</strong>
                 <br/>
                 {message.body}
               </li>;
     }
 
-    // listWrapperStyle = {
-    //   position: 'absolute',
-    //   width: '100%',
-    //   height: '90%',
-    //   overflow: 'auto'
-    // };
+
+    var listWrapperStyle = {
+      position: 'absolute',
+      width: '100%',
+      height: '90%',
+      overflow: 'auto',
+    };
 
     return (
-      <div className="list-wrapper">
+      <div className="list-wrapper" style={listWrapperStyle}>
         <ul className="list-unstyled">{this.props.messages.map(createMessage)}</ul>
       </div>
     )
@@ -41,3 +32,18 @@ var MessagesList = React.createClass({
 
 
 
+function liStyle(mine) {
+  var style = {
+    marginBottom: 20,
+  };
+
+  if (mine) {
+    style.textAlign = 'right';
+    style.paddingLeft = 50;
+  } else {
+    style.textAlign = 'left';
+    style.paddingRight = 50;
+  }
+
+  return style
+}

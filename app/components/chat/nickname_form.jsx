@@ -1,6 +1,12 @@
-var Navigation = ReactRouter.Navigation;
+'use strict';
 
-var Nickname = React.createClass({
+import React from 'react/addons'
+import { Navigation } from 'react-router'
+
+import NicknameStorage from '../../shared/nickname_storage'
+import ChatActions from './_actions'
+
+export default React.createClass({
   mixins: [
     NicknameStorage,
     Navigation

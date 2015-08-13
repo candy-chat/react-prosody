@@ -1,3 +1,5 @@
+var jQuery = require('jquery');
+
 /** File: candy.js
  * Candy - Chats are not dead yet.
  *

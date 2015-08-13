@@ -1,6 +1,14 @@
 'use strict';
 
-var chatStore = Reflux.createStore({
+import Reflux from 'reflux'
+import $ from 'jquery'
+
+import ServerConnection from '../../mixins/server_connection'
+import ChatActions from './_actions'
+
+import Candy from '../../vendor/candy'
+
+export default Reflux.createStore({
   listenables: [ChatActions],
   mixins: [
     ServerConnection

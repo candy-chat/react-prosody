@@ -1,4 +1,4 @@
-var NicknameStorage = {
+export default {
   getNickname () {
     return localStorage.getItem('nickname');
   },

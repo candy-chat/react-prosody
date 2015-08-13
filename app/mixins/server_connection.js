@@ -1,4 +1,8 @@
-var ServerConnection = {
+'use strict';
+
+import Candy from '../vendor/candy'
+
+export default {
   connectUsing (nickname) {
     Candy.init('/http-bind/', { // uncomment & comment next line if you'd like to use BOSH
 

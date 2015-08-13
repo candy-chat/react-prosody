@@ -1,11 +1,11 @@
-(function(Reflux, global) {
-  'use strict';
+'use strict';
 
-  global.ChatActions = Reflux.createActions([
-    "connectToServer",
+import Reflux from 'reflux'
 
-    "newMessage",
-    "messageReceived",
-  ]);
+export default Reflux.createActions([
+  "connectToServer",
 
-})(window.Reflux, window);
+  "newMessage",
+  "messageReceived",
+]);
+
