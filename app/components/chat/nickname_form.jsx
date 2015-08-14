@@ -3,7 +3,7 @@
 import React from 'react/addons'
 import { Navigation } from 'react-router'
 
-import NicknameStorage from '../../shared/nickname_storage'
+import NicknameStorage from '../_shared/nickname_storage'
 import ChatActions from './_actions'
 
 export default React.createClass({

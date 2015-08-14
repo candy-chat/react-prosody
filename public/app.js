@@ -4,6 +4,23 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+exports['default'] = {
+  getNickname: function getNickname() {
+    return localStorage.getItem('nickname');
+  },
+
+  setNickname: function setNickname(nickname) {
+    localStorage.setItem('nickname', nickname);
+  }
+};
+module.exports = exports['default'];
+
+},{}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
@@ -36,7 +53,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"../../vendor/candy":10}],2:[function(require,module,exports){
+},{"../../vendor/candy":10}],3:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) {
@@ -53,7 +70,7 @@ var _reactRouterLibHashHistory = require('react-router/lib/HashHistory');
 
 var _reactRouterLibHashHistory2 = _interopRequireDefault(_reactRouterLibHashHistory);
 
-var _sharedNickname_storage = require('../shared/nickname_storage');
+var _sharedNickname_storage = require('./_shared/nickname_storage');
 
 var _sharedNickname_storage2 = _interopRequireDefault(_sharedNickname_storage);
 
@@ -99,7 +116,7 @@ function headerStyle() {
 
 _reactAddons2['default'].render(_reactAddons2['default'].createElement(_reactRouter.Router, { history: new _reactRouterLibHashHistory2['default']() }, _reactAddons2['default'].createElement(_reactRouter.Route, { component: App }, _reactAddons2['default'].createElement(_reactRouter.Route, { path: '/', component: _chatMain2['default'] }), _reactAddons2['default'].createElement(_reactRouter.Route, { path: '/nickname', component: _chatNickname_form2['default'] }))), document.getElementById('app'));
 
-},{"../shared/nickname_storage":9,"./chat/_actions":3,"./chat/main":5,"./chat/nickname_form":8,"react-router":38,"react-router/lib/HashHistory":20,"react/addons":47}],3:[function(require,module,exports){
+},{"./_shared/nickname_storage":1,"./chat/_actions":4,"./chat/main":6,"./chat/nickname_form":9,"react-router":38,"react-router/lib/HashHistory":20,"react/addons":47}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -117,7 +134,7 @@ var _reflux2 = _interopRequireDefault(_reflux);
 exports['default'] = _reflux2['default'].createActions(["connectToServer", "newMessage", "messageReceived"]);
 module.exports = exports['default'];
 
-},{"reflux":236}],4:[function(require,module,exports){
+},{"reflux":236}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -197,7 +214,7 @@ exports['default'] = _reflux2['default'].createStore({
 });
 module.exports = exports['default'];
 
-},{"../../vendor/candy":10,"../_shared/server_connection":1,"./_actions":3,"jquery":16,"reflux":236}],5:[function(require,module,exports){
+},{"../../vendor/candy":10,"../_shared/server_connection":2,"./_actions":4,"jquery":16,"reflux":236}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -239,7 +256,7 @@ exports['default'] = _reactAddons2['default'].createClass({
 });
 module.exports = exports['default'];
 
-},{"./_store":4,"./messages_list":6,"./new_message_form":7,"react/addons":47,"reflux":236}],6:[function(require,module,exports){
+},{"./_store":5,"./messages_list":7,"./new_message_form":8,"react/addons":47,"reflux":236}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -290,7 +307,7 @@ function liStyle(mine) {
 }
 module.exports = exports['default'];
 
-},{"react/addons":47}],7:[function(require,module,exports){
+},{"react/addons":47}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -342,7 +359,7 @@ function inputStyle() {
 }
 module.exports = exports['default'];
 
-},{"./_actions":3,"react/addons":47}],8:[function(require,module,exports){
+},{"./_actions":4,"react/addons":47}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -359,7 +376,7 @@ var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
 var _reactRouter = require('react-router');
 
-var _sharedNickname_storage = require('../../shared/nickname_storage');
+var _sharedNickname_storage = require('../_shared/nickname_storage');
 
 var _sharedNickname_storage2 = _interopRequireDefault(_sharedNickname_storage);
 
@@ -389,24 +406,7 @@ exports['default'] = _reactAddons2['default'].createClass({
 });
 module.exports = exports['default'];
 
-},{"../../shared/nickname_storage":9,"./_actions":3,"react-router":38,"react/addons":47}],9:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-exports['default'] = {
-  getNickname: function getNickname() {
-    return localStorage.getItem('nickname');
-  },
-
-  setNickname: function setNickname(nickname) {
-    localStorage.setItem('nickname', nickname);
-  }
-};
-module.exports = exports['default'];
-
-},{}],10:[function(require,module,exports){
+},{"../_shared/nickname_storage":1,"./_actions":4,"react-router":38,"react/addons":47}],10:[function(require,module,exports){
 'use strict';Object.defineProperty(exports, '__esModule', { value: true });function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }var _componentsChat_actions = require('../components/chat/_actions');var _componentsChat_actions2 = _interopRequireDefault(_componentsChat_actions); /** File: candy.js
@@ -2578,7 +2578,7 @@ module.exports = exports['default'];
       } } };return self;
 })(Candy.Core.Event || {}, Strophe, jQuery);exports['default'] = Candy;module.exports = exports['default'];
 
-},{"../components/chat/_actions":3,"./strophejs-plugins/caps/strophe.caps.jsonly.js":11,"./strophejs-plugins/disco/strophe.disco.js":12,"./strophejs-plugins/muc/strophe.muc.js":13,"./strophejs-plugins/roster/strophe.roster.js":14,"jquery":16,"strophe":239}],11:[function(require,module,exports){
+},{"../components/chat/_actions":4,"./strophejs-plugins/caps/strophe.caps.jsonly.js":11,"./strophejs-plugins/disco/strophe.disco.js":12,"./strophejs-plugins/muc/strophe.muc.js":13,"./strophejs-plugins/roster/strophe.roster.js":14,"jquery":16,"strophe":239}],11:[function(require,module,exports){
 /**
  * Entity Capabilities (XEP-0115)
  *
@@ -45399,7 +45399,7 @@ if (callback) {
 });
 /* jshint ignore:end */
 
-},{}]},{},[2])
+},{}]},{},[3])
 
 
 //# sourceMappingURL=maps/app.js.map

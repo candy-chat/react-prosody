@@ -4,7 +4,7 @@ import React from 'react/addons';
 import { Router, Route, Link, Navigation, DefaultRoute, RouteHandler } from 'react-router';
 import HashHistory from 'react-router/lib/HashHistory';
 
-import NicknameStorage from '../shared/nickname_storage'
+import NicknameStorage from './_shared/nickname_storage'
 import Nickname from './chat/nickname_form'
 import Chat from './chat/main'
 import ChatActions from './chat/_actions'
