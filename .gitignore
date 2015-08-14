@@ -1,5 +1,5 @@
 app/vendor/*
-!app/vendor/candy/
+!app/vendor/candy.js
 
 .vagrant
 .idea
