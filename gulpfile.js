@@ -46,8 +46,8 @@ function buildScript(file, watch) {
             .pipe(source('app.js'))
             .pipe(buffer())
             .pipe($.sourcemaps.init({ loadMaps: true }))
-            .pipe($.sourcemaps.write('./maps'))
-            .pipe(gulp.dest(buildDir));
+            .pipe($.sourcemaps.write('./'))
+            .pipe(gulp.dest(buildDir + 'js/'));
     }
 
     bundler.on('update', rebundle);
