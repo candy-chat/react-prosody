@@ -16,10 +16,8 @@ export default React.createClass({
 
 
     var listWrapperStyle = {
-      position: 'absolute',
-      width: '100%',
-      height: '90%',
       overflow: 'auto',
+      maxHeight: '80%',
     };
 
     return (

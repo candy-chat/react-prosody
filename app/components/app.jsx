@@ -31,15 +31,25 @@ let App = React.createClass({
   render () {
     return (
       <div>
-        <header>
+        <header style={headerStyle()}>
           <h3>Candy React</h3>
         </header>
 
-        { this.props.children }
+        <hr/>
+
+        <main style={headerStyle()}>
+          { this.props.children }
+        </main>
       </div>
     )
   }
 });
+
+function headerStyle () {
+  return {
+    padding: '0 20px'
+  }
+}
 
 
 React.render((

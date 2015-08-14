@@ -49,9 +49,15 @@ var App = _reactAddons2['default'].createClass({
   },
 
   render: function render() {
-    return _reactAddons2['default'].createElement('div', null, _reactAddons2['default'].createElement('header', null, _reactAddons2['default'].createElement('h3', null, 'Candy React')), this.props.children);
+    return _reactAddons2['default'].createElement('div', null, _reactAddons2['default'].createElement('header', { style: headerStyle() }, _reactAddons2['default'].createElement('h3', null, 'Candy React')), _reactAddons2['default'].createElement('hr', null), _reactAddons2['default'].createElement('main', { style: headerStyle() }, this.props.children));
   }
 });
+
+function headerStyle() {
+  return {
+    padding: '0 20px'
+  };
+}
 
 _reactAddons2['default'].render(_reactAddons2['default'].createElement(_reactRouter.Router, { history: new _reactRouterLibHashHistory2['default']() }, _reactAddons2['default'].createElement(_reactRouter.Route, { component: App }, _reactAddons2['default'].createElement(_reactRouter.Route, { path: '/', component: _chatMain2['default'] }), _reactAddons2['default'].createElement(_reactRouter.Route, { path: '/nickname', component: _chatNickname_form2['default'] }))), document.getElementById('app'));
 
@@ -221,10 +227,8 @@ exports['default'] = _reactAddons2['default'].createClass({
     }
 
     var listWrapperStyle = {
-      position: 'absolute',
-      width: '100%',
-      height: '90%',
-      overflow: 'auto'
+      overflow: 'auto',
+      maxHeight: '80%'
     };
 
     return _reactAddons2['default'].createElement('div', { className: 'list-wrapper', style: listWrapperStyle }, _reactAddons2['default'].createElement('ul', { className: 'list-unstyled' }, this.props.messages.map(createMessage)));
