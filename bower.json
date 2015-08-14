@@ -7,6 +7,6 @@
     "url": "git://github.com/rafbgarcia/react-prosody.git"
   },
   "dependencies": {
-    "strophejs-plugins": "benlangfeld/strophejs-plugins#30fb089457addc37e01d69c3536dee868a90a9ad"
+    "strophejs-plugins": "rafbgarcia/strophejs-plugins#master"
   }
 }
