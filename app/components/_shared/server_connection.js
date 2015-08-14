@@ -1,6 +1,6 @@
 'use strict';
 
-import Candy from '../vendor/candy'
+import Candy from '../../vendor/candy'
 
 export default {
   connectUsing (nickname) {

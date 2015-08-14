@@ -3,7 +3,7 @@
 import Reflux from 'reflux'
 import $ from 'jquery'
 
-import ServerConnection from '../../mixins/server_connection'
+import ServerConnection from '../_shared/server_connection'
 import ChatActions from './_actions'
 
 import Candy from '../../vendor/candy'

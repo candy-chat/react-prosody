@@ -1,6 +1,44 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { 'default': obj };
+}
+
+var _vendorCandy = require('../../vendor/candy');
+
+var _vendorCandy2 = _interopRequireDefault(_vendorCandy);
+
+exports['default'] = {
+  connectUsing: function connectUsing(nickname) {
+    _vendorCandy2['default'].init('/http-bind/', { // uncomment & comment next line if you'd like to use BOSH
+
+      // Candy.init('ws://localhost:5280/xmpp-websocket/', {
+      core: {
+        // only set this to true if developing / debugging errors
+        debug: true,
+        // autojoin is a *required* parameter if you don't have a plugin (e.g. roomPanel) for it
+        //   true
+        //     -> fetch info from server (NOTE: does only work with openfire server)
+        //   ['test@conference.example.com']
+        //     -> array of rooms to join after connecting
+        autojoin: ['test@conference.localhost']
+      },
+      view: { assets: 'res/' }
+    });
+
+    _vendorCandy2['default'].Core.connect('localhost', null, nickname);
+  }
+};
+module.exports = exports['default'];
+
+},{"../../vendor/candy":10}],2:[function(require,module,exports){
+'use strict';
+
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
@@ -61,7 +99,7 @@ function headerStyle() {
 
 _reactAddons2['default'].render(_reactAddons2['default'].createElement(_reactRouter.Router, { history: new _reactRouterLibHashHistory2['default']() }, _reactAddons2['default'].createElement(_reactRouter.Route, { component: App }, _reactAddons2['default'].createElement(_reactRouter.Route, { path: '/', component: _chatMain2['default'] }), _reactAddons2['default'].createElement(_reactRouter.Route, { path: '/nickname', component: _chatNickname_form2['default'] }))), document.getElementById('app'));
 
-},{"../shared/nickname_storage":9,"./chat/_actions":2,"./chat/main":4,"./chat/nickname_form":7,"react-router":38,"react-router/lib/HashHistory":20,"react/addons":47}],2:[function(require,module,exports){
+},{"../shared/nickname_storage":9,"./chat/_actions":3,"./chat/main":5,"./chat/nickname_form":8,"react-router":38,"react-router/lib/HashHistory":20,"react/addons":47}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -79,7 +117,7 @@ var _reflux2 = _interopRequireDefault(_reflux);
 exports['default'] = _reflux2['default'].createActions(["connectToServer", "newMessage", "messageReceived"]);
 module.exports = exports['default'];
 
-},{"reflux":236}],3:[function(require,module,exports){
+},{"reflux":236}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -98,9 +136,9 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _mixinsServer_connection = require('../../mixins/server_connection');
+var _sharedServer_connection = require('../_shared/server_connection');
 
-var _mixinsServer_connection2 = _interopRequireDefault(_mixinsServer_connection);
+var _sharedServer_connection2 = _interopRequireDefault(_sharedServer_connection);
 
 var _actions = require('./_actions');
 
@@ -112,7 +150,7 @@ var _vendorCandy2 = _interopRequireDefault(_vendorCandy);
 
 exports['default'] = _reflux2['default'].createStore({
   listenables: [_actions2['default']],
-  mixins: [_mixinsServer_connection2['default']],
+  mixins: [_sharedServer_connection2['default']],
 
   onConnectToServer: function onConnectToServer(nickname) {
     this.connectUsing(nickname);
@@ -159,7 +197,7 @@ exports['default'] = _reflux2['default'].createStore({
 });
 module.exports = exports['default'];
 
-},{"../../mixins/server_connection":8,"../../vendor/candy":10,"./_actions":2,"jquery":16,"reflux":236}],4:[function(require,module,exports){
+},{"../../vendor/candy":10,"../_shared/server_connection":1,"./_actions":3,"jquery":16,"reflux":236}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -201,7 +239,7 @@ exports['default'] = _reactAddons2['default'].createClass({
 });
 module.exports = exports['default'];
 
-},{"./_store":3,"./messages_list":5,"./new_message_form":6,"react/addons":47,"reflux":236}],5:[function(require,module,exports){
+},{"./_store":4,"./messages_list":6,"./new_message_form":7,"react/addons":47,"reflux":236}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -252,7 +290,7 @@ function liStyle(mine) {
 }
 module.exports = exports['default'];
 
-},{"react/addons":47}],6:[function(require,module,exports){
+},{"react/addons":47}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -304,7 +342,7 @@ function inputStyle() {
 }
 module.exports = exports['default'];
 
-},{"./_actions":2,"react/addons":47}],7:[function(require,module,exports){
+},{"./_actions":3,"react/addons":47}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -351,45 +389,7 @@ exports['default'] = _reactAddons2['default'].createClass({
 });
 module.exports = exports['default'];
 
-},{"../../shared/nickname_storage":9,"./_actions":2,"react-router":38,"react/addons":47}],8:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { 'default': obj };
-}
-
-var _vendorCandy = require('../vendor/candy');
-
-var _vendorCandy2 = _interopRequireDefault(_vendorCandy);
-
-exports['default'] = {
-  connectUsing: function connectUsing(nickname) {
-    _vendorCandy2['default'].init('/http-bind/', { // uncomment & comment next line if you'd like to use BOSH
-
-      // Candy.init('ws://localhost:5280/xmpp-websocket/', {
-      core: {
-        // only set this to true if developing / debugging errors
-        debug: true,
-        // autojoin is a *required* parameter if you don't have a plugin (e.g. roomPanel) for it
-        //   true
-        //     -> fetch info from server (NOTE: does only work with openfire server)
-        //   ['test@conference.example.com']
-        //     -> array of rooms to join after connecting
-        autojoin: ['test@conference.localhost']
-      },
-      view: { assets: 'res/' }
-    });
-
-    _vendorCandy2['default'].Core.connect('localhost', null, nickname);
-  }
-};
-module.exports = exports['default'];
-
-},{"../vendor/candy":10}],9:[function(require,module,exports){
+},{"../../shared/nickname_storage":9,"./_actions":3,"react-router":38,"react/addons":47}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -2578,7 +2578,7 @@ module.exports = exports['default'];
       } } };return self;
 })(Candy.Core.Event || {}, Strophe, jQuery);exports['default'] = Candy;module.exports = exports['default'];
 
-},{"../components/chat/_actions":2,"./strophejs-plugins/caps/strophe.caps.jsonly.js":11,"./strophejs-plugins/disco/strophe.disco.js":12,"./strophejs-plugins/muc/strophe.muc.js":13,"./strophejs-plugins/roster/strophe.roster.js":14,"jquery":16,"strophe":239}],11:[function(require,module,exports){
+},{"../components/chat/_actions":3,"./strophejs-plugins/caps/strophe.caps.jsonly.js":11,"./strophejs-plugins/disco/strophe.disco.js":12,"./strophejs-plugins/muc/strophe.muc.js":13,"./strophejs-plugins/roster/strophe.roster.js":14,"jquery":16,"strophe":239}],11:[function(require,module,exports){
 /**
  * Entity Capabilities (XEP-0115)
  *
@@ -45399,7 +45399,7 @@ if (callback) {
 });
 /* jshint ignore:end */
 
-},{}]},{},[1])
+},{}]},{},[2])
 
 
 //# sourceMappingURL=maps/app.js.map
