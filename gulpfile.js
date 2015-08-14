@@ -1,15 +1,11 @@
 'use strict';
 
 var gulp = require('gulp');
-var runSequence = require('run-sequence');
-var browserSync = require('browser-sync').create();
-var historyApiFallback = require('connect-history-api-fallback');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-var del = require('del');
 var extend = require('lodash/object/extend');
 
 var $ = require('gulp-load-plugins')();
