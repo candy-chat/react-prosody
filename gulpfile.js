@@ -21,9 +21,11 @@ gulp.task('js', function() {
     return buildScript('app.jsx');
 });
 
-gulp.task('default', function () {
+gulp.task('watch', function () {
     buildScript('app.jsx', true);
-})
+});
+
+gulp.task('default', ['js']);
 
 function buildScript(file, watch) {
     var props = extend({}, watchify.args, {
