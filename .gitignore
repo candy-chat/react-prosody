@@ -1,2 +1,10 @@
+app/vendor/*
+!app/vendor/candy.js
+
+public/*
+!public/index.html
+
 .vagrant
 .idea
+node_modules
+

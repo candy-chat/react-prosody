@@ -34,3 +34,8 @@ apt-get install -y nginx
 cp /vagrant/nginx-default.conf /etc/nginx/sites-available/default
 /etc/init.d/nginx restart
 
+
+cd /vagrant
+
+npm install && bower install
+gulp watch
